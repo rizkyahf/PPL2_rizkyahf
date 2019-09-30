@@ -1,0 +1,68 @@
+.bordered{
+    border: solid 1px #005f95;
+}
+.title-shop{
+    background-color: #c6ecfb;
+}
+.title-shop .row{
+    /* min-height: 270px; */
+    margin: 30px 0px;
+}
+.title-container p.title-big{
+    vertical-align: middle;
+}
+p.title-big{
+    color: #005f95;
+    font-size: 80px;
+    /* margin: 0px auto; */
+}
+.custom-navbar{
+    background-color: #005f95;
+    color: white;
+    text-align: center
+}
+.menu-button{
+    margin: 10px 0px;
+}
+.menu-button a{
+    color: white;
+
+}
+.form-section{
+    background-color: #005f95;
+    border-radius: 30px;
+    padding: 50px;
+    margin-top: 15%;
+}
+.title-login{
+    text-transform: uppercase;
+    color: whitesmoke;
+    font-size: 50px;
+    text-align: center;
+}
+.body-section{
+    min-height: 668px;
+    padding-top: 20px;
+}
+.title-body{
+    margin-bottom: 20px;
+}
+.title-body div a{
+    margin-top: 15%;
+}
+footer{
+    background-color: #002335;
+	text-align: center;
+	color:white;
+	padding: 10px;
+	font-size: 14px;
+}
+.photo-list{
+	width: 100px;
+}
+.photo-main{
+	width: 100%;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color:#c6ecfb;
+ }
