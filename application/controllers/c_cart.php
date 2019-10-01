@@ -8,9 +8,10 @@ class c_cart extends CI_Controller {
     }
 
     public function display(){
-        echo "<pre>"; var_dump($this->session->cart); echo "</pre>";   
-        // $data['content_div'] = $this->load->view('v_cart_display', '', TRUE);;
-        // $this->load->view('v_template', $data);
+        // echo "<pre>"; var_dump($this->session->cart); echo "</pre>";   
+        // echo uniqid();
+        $data['content_div'] = $this->load->view('v_cart_display', '', TRUE);;
+        $this->load->view('v_template', $data);
     }
 
     public function add($id){
@@ -31,11 +32,8 @@ class c_cart extends CI_Controller {
             $qty = $_SESSION['cart'][$id]['jumlah'];
             $_SESSION['cart'][$id]['jumlah'] = $qty + 1;
         }
-
-        echo "<pre>"; var_dump($this->session->cart); echo "</pre>";   
         
         redirect(base_url().'index.php/c_cart/display');
-        // unset($_SESSION['cart']);
     }
     
     public function clear_all(){

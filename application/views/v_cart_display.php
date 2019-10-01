@@ -65,3 +65,10 @@
             </table>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-10">
+            <?php if(isset($_SESSION['cart'])){ ?>
+            <a class="btn btn-warning btn-block" href="<?=base_url();?>index.php/c_transaksi/add_data_pembeli">Checkout</a>
+            <?php } ?>
+        </div>
+    </div>
