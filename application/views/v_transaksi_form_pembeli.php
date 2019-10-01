@@ -5,7 +5,7 @@
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form method="POST" action="<?=base_url();?>index.php/c_transaksi/proses_transaksi">
+            <form method="POST" action="<?=base_url();?>index.php/c_transaksi/proses_transaksi ">
                 <div class="row">
                     <div class="col-md-2">
                         Kode Penjualan

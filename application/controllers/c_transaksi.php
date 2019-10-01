@@ -5,11 +5,27 @@ class c_transaksi extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_transaksi');
+		$this->load->model('m_souvenir');
 	}
 
 	public function add_data_pembeli(){
-		$data['content_div'] = $this->load->view('v_transaksi_form_pembeli', '', TRUE);;
-		$this->load->view('v_template', $data);
+		$ableToNext = true;
+		foreach($this->session->cart as $res){
+			$temp = $this->m_souvenir->get_by_id($res['id']);
+			if($res['jumlah'] > $temp['stok']){ ?>
+				<script>
+					alert('Stok dari <?=$res['nama_barang'];?> Tinggal Tersisa <?=$temp['stok'];?>!');
+					window.history.go(-1);
+				</script>
+			<?php 
+				$ableToNext = false;
+			}
+		}
+
+		if($ableToNext){
+			$data['content_div'] = $this->load->view('v_transaksi_form_pembeli', '', TRUE);;
+			$this->load->view('v_template', $data);
+		}
 	}
 
 	public function proses_transaksi(){
@@ -19,8 +35,12 @@ class c_transaksi extends CI_Controller {
 		$total = 0;
 
 		foreach($this->session->cart as $res){
-			
 			$total = $total + ($res['harga'] * $res['jumlah']);
+
+			$temp = $this->m_souvenir->get_by_id($res['id']);
+			$stok['stok']	= $temp['stok']-$res['jumlah'];
+
+			$this->m_souvenir->update_stok($res['id'], $stok);
 		}
 
 		$data['no_penjualan']       = $this->input->post('no_penjualan'); 

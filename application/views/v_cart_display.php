@@ -32,7 +32,15 @@
                 <tr>
                     <td><?=$i;?>.</td>
                     <td><?=$row['nama_barang'];?></td>
-                    <td><?=$row['jumlah'];?></td>
+                    <td>
+                        <a class="btn btn-success" href="<?=base_url();?>index.php/c_cart/decrease_jumlah/<?=$row['id'];?>">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </a>
+                        &nbsp;<?=$row['jumlah'];?>&nbsp;
+                        <a class="btn btn-success" href="<?=base_url();?>index.php/c_cart/increase_jumlah/<?=$row['id'];?>">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </td>
                     <td>Rp. <?=number_format($row['harga'], 0, ',', '.');?></td>
                     <td>Rp. <?=number_format($count, 0, ',', '.');?></td>
                     <td>

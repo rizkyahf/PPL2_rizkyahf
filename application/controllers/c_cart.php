@@ -35,6 +35,35 @@ class c_cart extends CI_Controller {
         
         redirect(base_url().'index.php/c_cart/display');
     }
+
+    public function increase_jumlah($id){
+        $data = $this->m_souvenir->get_by_id($id);
+        $qty = $_SESSION['cart'][$id]['jumlah'];
+        if($qty == $data['stok']){ ?>
+            <script>
+                alert('Sudah Mencapai Stok Maksimum yang tersedia!');
+                window.history.go(-1);
+            </script>
+        <?php }
+        else {
+            $_SESSION['cart'][$id]['jumlah'] = $qty + 1;
+            redirect(base_url().'index.php/c_cart/display');
+        }
+    }
+
+    public function decrease_jumlah($id){
+        $qty = $_SESSION['cart'][$id]['jumlah'];
+        if($qty == 1){ ?>
+            <script>
+                alert('Sudah Mencapai Stok Minimum yang Dapat Dibeli!');
+                window.history.go(-1);
+            </script>
+        <?php }
+        else {
+            $_SESSION['cart'][$id]['jumlah'] = $qty - 1;
+            redirect(base_url().'index.php/c_cart/display');
+        }
+    }
     
     public function clear_all(){
         unset($_SESSION['cart']);

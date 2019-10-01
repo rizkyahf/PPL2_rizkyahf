@@ -18,4 +18,8 @@ class m_souvenir extends CI_Model {
         // echo $this->db->last_query();
     }
 
+    public function update_stok($id, $data){
+        $this->db->where('id_barang', $id);
+        $this->db->update('souvenir', $data);
+    }
 }
