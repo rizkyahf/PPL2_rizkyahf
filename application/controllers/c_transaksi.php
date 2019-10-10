@@ -23,7 +23,8 @@ class c_transaksi extends CI_Controller {
 		}
 
 		if($ableToNext){
-			$data['content_div'] = $this->load->view('v_transaksi_form_pembeli', '', TRUE);;
+			$data1['dropdown_provinsi'] = $this->load->view('v_ajax_dropdown_provinsi', '', TRUE);
+			$data['content_div'] = $this->load->view('v_transaksi_form_pembeli', $data1, TRUE);
 			$this->load->view('v_template', $data);
 		}
 	}
@@ -65,6 +66,22 @@ class c_transaksi extends CI_Controller {
 
         unset($_SESSION['cart']);
         redirect(base_url().'index.php/c_cart/display');
+	}
+
+	public function display_all(){
+        $data1['transaksi'] = $this->m_transaksi->get_all();
+        $data['content_div'] = $this->load->view('v_transaksi_display_admin', $data1, TRUE);
+        $this->load->view('v_template', $data);
+	}
+
+	public function update_sudahbayar($no_penjualan){
+		$this->m_transaksi->update_sudahbayar($no_penjualan);
+		redirect(base_url().'index.php/c_transaksi/display_all');
+	}
+	
+	public function update_sudahkirim($no_penjualan){
+		$this->m_transaksi->update_sudahkirim($no_penjualan);
+		redirect(base_url().'index.php/c_transaksi/display_all');
 	}
 }
 

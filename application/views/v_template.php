@@ -23,6 +23,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="<?=base_url();?>assets/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script src="<?=base_url();?>assets/bootstrap/js/bootstrap.js"></script>
   </head>
 
   <body>
@@ -48,6 +54,7 @@
                         <div class="col-md-3 menu-button"><a href="<?=base_url();?>">Home</a></div>
                         <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/c_souvenir/display">Souvenir</a></div>
                         <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/c_cart/display">My Cart</a></div>
+                        <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/c_transaksi/display_all">Daftar Transaksi (admin)</a></div>
                         <!-- <?php if(isset($_SESSION['username'])): ?>
                         <div class="col-md-3 menu-button"><a href="template.php?page=admin">Admin Page</a></div>
                         <div class="col-md-3 menu-button"><a href="logout.php">Logout</a></div>
@@ -71,10 +78,5 @@
         </div>
     </footer>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/bootstrap/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.js"></script>
   </body>
 </html>

@@ -6,9 +6,9 @@ class c_home extends CI_Controller {
         parent::__construct();
         $this->load->model('m_mahasiswa');
         
-        if($this->session->userdata('username') == null){
-            redirect(site_url());
-        }
+        // if($this->session->userdata('username') == null){
+        //     redirect(site_url());
+        // }
     }
     
     public function index(){
