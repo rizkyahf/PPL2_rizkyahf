@@ -25,7 +25,8 @@ class c_cart extends CI_Controller {
                         "id"            => $id,
                         "nama_barang"   => $data['nama_barang'],
                         "jumlah"        => 1,
-                        "harga"         => $data['harga']
+                        "harga"         => $data['harga'],
+                        "berat"         => $data['berat']
                     );
         }
         else{

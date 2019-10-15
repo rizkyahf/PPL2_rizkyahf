@@ -118,6 +118,7 @@ class c_ongkir extends CI_Controller {
             $data = json_decode($response, true);
             // echo($data['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value']);
             echo "Rp. ".number_format($data['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'],0,',','.');
+            // var_dump($data);
         }
     }
 

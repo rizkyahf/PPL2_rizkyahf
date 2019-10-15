@@ -84,6 +84,24 @@
                 </div>
                 <div class="row">
                     <div class="col-md-2">
+                        Total Berat Barang
+                    </div>
+                    <div class="col-md-10">
+                        <?php
+                            $berat = 0;
+                            foreach($_SESSION['cart'] as $row) {
+                                // $id = $_SESSION['cart'][]
+                                $count = $row['jumlah'] * $row['berat'];
+                                $berat = $berat + $count;
+                            }
+                            // var_dump($_SESSION['cart']);
+                        ?>
+                        <!-- Rp. <?=number_format($sum, 0, ',', '.');?> -->
+                        <?=$berat; ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
                         Ongkos Kirim (JNE)
                         <a class="btn btn-primary btn-xs" id="cek_ongkir">cek ongkir</a>
                     </div>
@@ -114,7 +132,7 @@
         </div>
     </div>
     <script>
-        $(document).ready(function(){
+        // $(document).ready(function(){
             $('#id_provinsi').change(function(){
                 //Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax 
                 var prov = $('#id_provinsi').val();
@@ -135,7 +153,7 @@
                 var asal        = 22; // id bandung
                 var kota_tujuan = $('#id_kota').val();
                 var kurir       = 'jne'; // id kurir jne
-                var berat       = 1000; // satuannya gram
+                var berat       = <?=$berat; ?>; // satuannya gram
 
                 console.log(kota_tujuan);
                 if(kota_tujuan == ''){
@@ -153,6 +171,29 @@
                     });
                 }
             });
-        });
+            
+            $('#id_kota').change(function(){
+                var asal        = 22; // id bandung
+                var kota_tujuan = $('#id_kota').val();
+                var kurir       = 'jne'; // id kurir jne
+                var berat       = <?=$berat; ?>; // satuannya gram
+
+                console.log(kota_tujuan);
+                if(kota_tujuan == ''){
+                    alert('Harap isi Kota Tujuan!');
+                }
+                else{
+                    $.ajax({
+                        type : 'POST',
+                        url : '<?=base_url();?>index.php/c_ongkir/ajax_calculate_ongkir',
+                        data :  {'kota_tujuan' : kota_tujuan, 'kurir' : kurir, 'asal' : asal, 'berat' : berat},
+                        success: function (data) {
+                            //jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+                            $("#calculated_ongkir").html(data);
+                        }
+                    });
+                }
+            });
+        // });
             
     </script>
