@@ -72,13 +72,11 @@ class c_ongkir extends CI_Controller {
         //echo $response;
         }
 
-        echo "<select name='id_kota' id='id_kota' class='form-control'>";
         echo "<option> -- Pilih Kota Tujuan -- </option>";
         $data = json_decode($response, true);
         for ($i=0; $i < count($data['rajaongkir']['results']); $i++) { 
             echo "<option value='".$data['rajaongkir']['results'][$i]['city_id']."'>".$data['rajaongkir']['results'][$i]['city_name']."</option>";
         }
-        echo "</select>";
     }
 
     public function ajax_calculate_ongkir(){
@@ -116,8 +114,8 @@ class c_ongkir extends CI_Controller {
         if ($err) {	  echo "cURL Error #:" . $err;
         } else {
             $data = json_decode($response, true);
-            // echo($data['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value']);
-            echo "Rp. ".number_format($data['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'],0,',','.');
+            echo($data['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value']);
+            // echo "Rp. ".number_format($data['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'],0,',','.');
             // var_dump($data);
         }
     }

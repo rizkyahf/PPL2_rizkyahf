@@ -51,8 +51,7 @@
                         Kota
                     </div>
                     <div class="col-md-10" id="city">
-                        <!-- <input type="text" class="form-control" name="kota" placeholder="Kota"> -->
-                        <select name="id_kota" class="form-control">
+                        <select id="id_kota" name="id_kota" class="form-control">
                             <option> -- Pilih Kota -- </option>
                         </select>
                     </div>
@@ -90,20 +89,16 @@
                         <?php
                             $berat = 0;
                             foreach($_SESSION['cart'] as $row) {
-                                // $id = $_SESSION['cart'][]
                                 $count = $row['jumlah'] * $row['berat'];
                                 $berat = $berat + $count;
                             }
-                            // var_dump($_SESSION['cart']);
                         ?>
-                        <!-- Rp. <?=number_format($sum, 0, ',', '.');?> -->
-                        <?=$berat; ?>
+                        <?=$berat; ?> Gram
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-2">
                         Ongkos Kirim (JNE)
-                        <a class="btn btn-primary btn-xs" id="cek_ongkir">cek ongkir</a>
                     </div>
                     <div class="col-md-2" id="calculated_ongkir">
                         
@@ -115,7 +110,7 @@
                     <div class="col-md-2">
                         Total
                     </div>
-                    <div class="col-md-10" id="harga_ongkir">
+                    <div class="col-md-10" id="harga_total">
                         
                     </div>
                 </div>
@@ -132,68 +127,55 @@
         </div>
     </div>
     <script>
-        // $(document).ready(function(){
-            $('#id_provinsi').change(function(){
-                //Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax 
-                var prov = $('#id_provinsi').val();
-                console.log('in3');
+        function currencyFormatID(num) {
+            return (
+                'Rp. ' + num
+                // .toFixed(0) // always two decimal digits
+                .replace('.', ',') // replace decimal point character with ,
+                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+            ) // use . as a separator
+        }
+        $('#id_provinsi').change(function(){
+            //Mengambil value dari option select provinsi kemudian parameternya dikirim menggunakan ajax 
+            var prov = $('#id_provinsi').val();
+            console.log('in3');
 
+            $.ajax({
+                type : 'GET',
+                url : '<?=base_url();?>index.php/c_ongkir/ajax_city_dropdown',
+                data :  'prov_id=' + prov,
+                success: function (data) {
+                    //jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
+                    $("#id_kota").html(data);
+                }
+            });
+        });
+
+        $('#id_kota').change(function(){
+            var asal        = 22; // id bandung
+            var kota_tujuan = $('#id_kota').val();
+            var kurir       = 'jne'; // id kurir jne
+            var berat       = <?=$berat; ?>; // satuannya gram
+            var total       = 0;
+            var harga       = <?=$sum; ?>*1;
+
+            console.log(kota_tujuan);
+            if(kota_tujuan === ''){
+                alert('Harap isi Kota Tujuan!');
+            }
+            else{
                 $.ajax({
-                    type : 'GET',
-                    url : '<?=base_url();?>index.php/c_ongkir/ajax_city_dropdown',
-                    data :  'prov_id=' + prov,
+                    type : 'POST',
+                    url : '<?=base_url();?>index.php/c_ongkir/ajax_calculate_ongkir',
+                    data :  {'kota_tujuan' : kota_tujuan, 'kurir' : kurir, 'asal' : asal, 'berat' : berat},
                     success: function (data) {
                         //jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
-                        $("#city").html(data);
+                        $("#calculated_ongkir").html(currencyFormatID(data));
+                        total = parseInt(data) + parseInt(harga);
+                        $("#harga_total").html(currencyFormatID(""+total));
                     }
                 });
-            });
-
-            $('#cek_ongkir').click(function(){
-                var asal        = 22; // id bandung
-                var kota_tujuan = $('#id_kota').val();
-                var kurir       = 'jne'; // id kurir jne
-                var berat       = <?=$berat; ?>; // satuannya gram
-
-                console.log(kota_tujuan);
-                if(kota_tujuan == ''){
-                    alert('Harap isi Kota Tujuan!');
-                }
-                else{
-                    $.ajax({
-                        type : 'POST',
-                        url : '<?=base_url();?>index.php/c_ongkir/ajax_calculate_ongkir',
-                        data :  {'kota_tujuan' : kota_tujuan, 'kurir' : kurir, 'asal' : asal, 'berat' : berat},
-                        success: function (data) {
-                            //jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
-                            $("#calculated_ongkir").html(data);
-                        }
-                    });
-                }
-            });
-            
-            $('#id_kota').change(function(){
-                var asal        = 22; // id bandung
-                var kota_tujuan = $('#id_kota').val();
-                var kurir       = 'jne'; // id kurir jne
-                var berat       = <?=$berat; ?>; // satuannya gram
-
-                console.log(kota_tujuan);
-                if(kota_tujuan == ''){
-                    alert('Harap isi Kota Tujuan!');
-                }
-                else{
-                    $.ajax({
-                        type : 'POST',
-                        url : '<?=base_url();?>index.php/c_ongkir/ajax_calculate_ongkir',
-                        data :  {'kota_tujuan' : kota_tujuan, 'kurir' : kurir, 'asal' : asal, 'berat' : berat},
-                        success: function (data) {
-                            //jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
-                            $("#calculated_ongkir").html(data);
-                        }
-                    });
-                }
-            });
-        // });
+            }
+        });
             
     </script>
