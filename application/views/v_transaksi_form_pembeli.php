@@ -113,6 +113,9 @@
                     <div class="col-md-10" id="harga_total">
                         
                     </div>
+                    <div id="">
+                        
+                    </div>
                 </div>
                 <div class="row">&nbsp;</div>
                 <div class="row">

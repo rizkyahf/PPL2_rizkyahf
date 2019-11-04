@@ -75,7 +75,7 @@ class c_ongkir extends CI_Controller {
         echo "<option> -- Pilih Kota Tujuan -- </option>";
         $data = json_decode($response, true);
         for ($i=0; $i < count($data['rajaongkir']['results']); $i++) { 
-            echo "<option value='".$data['rajaongkir']['results'][$i]['city_id']."'>".$data['rajaongkir']['results'][$i]['city_name']."</option>";
+            echo "<option value='".$data['rajaongkir']['results'][$i]['city_id']."'>".$data['rajaongkir']['results'][$i]['city_name']." (".$data['rajaongkir']['results'][$i]['type'].")</option>";
         }
     }
 
@@ -115,8 +115,6 @@ class c_ongkir extends CI_Controller {
         } else {
             $data = json_decode($response, true);
             echo($data['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value']);
-            // echo "Rp. ".number_format($data['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'],0,',','.');
-            // var_dump($data);
         }
     }
 
