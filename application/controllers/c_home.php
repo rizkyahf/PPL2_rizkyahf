@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class c_home extends CI_Controller {
+class C_home extends CI_Controller {
     function __construct(){
         parent::__construct();
-        $this->load->model('m_mahasiswa');
+        $this->load->model('M_mahasiswa');
         
         // if($this->session->userdata('username') == null){
         //     redirect(site_url());

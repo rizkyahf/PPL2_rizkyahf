@@ -52,9 +52,9 @@
             <div class="col-md-12">
                 <div class="container">
                         <div class="col-md-3 menu-button"><a href="<?=base_url();?>">Home</a></div>
-                        <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/c_souvenir/display">Souvenir</a></div>
-                        <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/c_cart/display">My Cart</a></div>
-                        <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/c_transaksi/display_all">Daftar Transaksi (admin)</a></div>
+                        <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/C_souvenir/display">Souvenir</a></div>
+                        <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/C_cart/display">My Cart</a></div>
+                        <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/C_transaksi/display_all">Daftar Transaksi (admin)</a></div>
                         <!-- <?php if(isset($_SESSION['username'])): ?>
                         <div class="col-md-3 menu-button"><a href="template.php?page=admin">Admin Page</a></div>
                         <div class="col-md-3 menu-button"><a href="logout.php">Logout</a></div>

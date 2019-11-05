@@ -3,7 +3,7 @@
         <h1> Daftar Penjualan </h1>
     </div>
     <!-- <div class="col-md-1">
-        <a class='btn btn-danger' styles="" href="<?=base_url();?>index.php/c_cart/clear_all">
+        <a class='btn btn-danger' styles="" href="<?=base_url();?>index.php/C_cart/clear_all">
             Clear Cart
         </a>
     </div> -->
@@ -34,16 +34,16 @@
                     <td><?=$row['status'];?></td>
                     <td>
                         <?php if($row['status'] == 'blm_bayar') { ?>
-                        <a class="btn btn-primary btn-xs" href="<?=base_url();?>index.php/c_transaksi/update_sudahbayar/<?=$row['no_penjualan'];?>">
+                        <a class="btn btn-primary btn-xs" href="<?=base_url();?>index.php/C_transaksi/update_sudahbayar/<?=$row['no_penjualan'];?>">
                             Update Sudah Bayar
                         </a>
                         <?php } ?>
                         <?php if($row['status'] == 'sdh_bayar') { ?>
-                        <a class="btn btn-success btn-xs" href="<?=base_url();?>index.php/c_transaksi/update_sudahkirim/<?=$row['no_penjualan'];?>">
+                        <a class="btn btn-success btn-xs" href="<?=base_url();?>index.php/C_transaksi/update_sudahkirim/<?=$row['no_penjualan'];?>">
                             Update Sudah Kirim
                         </a>
                         <?php } ?>
-                        <!-- <a class="btn btn-danger btn-xs" href="<?=base_url();?>index.php/c_transaksi/update_bataltransaksi/<?=$row['no_penjualan'];?>">
+                        <!-- <a class="btn btn-danger btn-xs" href="<?=base_url();?>index.php/C_transaksi/update_bataltransaksi/<?=$row['no_penjualan'];?>">
                             Batalkan Transaksi
                         </a> -->
                     </td>
@@ -57,7 +57,7 @@
     <!-- <div class="row">
         <div class="col-md-2 col-md-offset-10">
             <?php if(isset($_SESSION['cart'])){ ?>
-            <a class="btn btn-warning btn-block" href="<?=base_url();?>index.php/c_transaksi/add_data_pembeli">Checkout</a>
+            <a class="btn btn-warning btn-block" href="<?=base_url();?>index.php/C_transaksi/add_data_pembeli">Checkout</a>
             <?php } ?>
         </div>
     </div> -->

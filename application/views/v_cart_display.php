@@ -3,7 +3,7 @@
         <h1> Cart </h1>
     </div>
     <div class="col-md-1">
-        <a class='btn btn-danger' styles="" href="<?=base_url();?>index.php/c_cart/clear_all">
+        <a class='btn btn-danger' styles="" href="<?=base_url();?>index.php/C_cart/clear_all">
             Clear Cart
         </a>
     </div>
@@ -33,18 +33,18 @@
                     <td><?=$i;?>.</td>
                     <td><?=$row['nama_barang'];?></td>
                     <td>
-                        <a class="btn btn-success" href="<?=base_url();?>index.php/c_cart/decrease_jumlah/<?=$row['id'];?>">
+                        <a class="btn btn-success" href="<?=base_url();?>index.php/C_cart/decrease_jumlah/<?=$row['id'];?>">
                             <span class="glyphicon glyphicon-minus"></span>
                         </a>
                         &nbsp;<?=$row['jumlah'];?>&nbsp;
-                        <a class="btn btn-success" href="<?=base_url();?>index.php/c_cart/increase_jumlah/<?=$row['id'];?>">
+                        <a class="btn btn-success" href="<?=base_url();?>index.php/C_cart/increase_jumlah/<?=$row['id'];?>">
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
                     </td>
                     <td>Rp. <?=number_format($row['harga'], 0, ',', '.');?></td>
                     <td>Rp. <?=number_format($count, 0, ',', '.');?></td>
                     <td>
-                        <a class="btn btn-danger" href="<?=base_url();?>index.php/c_cart/clear_by_id/<?=$row['id'];?>">
+                        <a class="btn btn-danger" href="<?=base_url();?>index.php/C_cart/clear_by_id/<?=$row['id'];?>">
                             <span class="glyphicon glyphicon-remove-sign"></span>
                         </a>
                     </td>
@@ -76,7 +76,7 @@
     <div class="row">
         <div class="col-md-2 col-md-offset-10">
             <?php if(isset($_SESSION['cart'])){ ?>
-            <a class="btn btn-warning btn-block" href="<?=base_url();?>index.php/c_transaksi/add_data_pembeli">Checkout</a>
+            <a class="btn btn-warning btn-block" href="<?=base_url();?>index.php/C_transaksi/add_data_pembeli">Checkout</a>
             <?php } ?>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class m_souvenir extends CI_Model {
+class M_souvenir extends CI_Model {
     public function __construct()
     {
         parent::__construct();

@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class c_cart extends CI_Controller {
+class C_cart extends CI_Controller {
     function __construct(){
         parent::__construct();
-        $this->load->model('m_souvenir');
+        $this->load->model('M_souvenir');
     }
 
     public function display(){
@@ -17,7 +17,7 @@ class c_cart extends CI_Controller {
     public function add($id){
         echo "adding ".$id;
 
-        $data = $this->m_souvenir->get_by_id($id);
+        $data = $this->M_souvenir->get_by_id($id);
 
         if(!isset($_SESSION['cart'][$id])){
             echo "kosong";
@@ -34,11 +34,11 @@ class c_cart extends CI_Controller {
             $_SESSION['cart'][$id]['jumlah'] = $qty + 1;
         }
         
-        redirect(base_url().'index.php/c_cart/display');
+        redirect(base_url().'index.php/C_cart/display');
     }
 
     public function increase_jumlah($id){
-        $data = $this->m_souvenir->get_by_id($id);
+        $data = $this->M_souvenir->get_by_id($id);
         $qty = $_SESSION['cart'][$id]['jumlah'];
         if($qty == $data['stok']){ ?>
             <script>
@@ -48,7 +48,7 @@ class c_cart extends CI_Controller {
         <?php }
         else {
             $_SESSION['cart'][$id]['jumlah'] = $qty + 1;
-            redirect(base_url().'index.php/c_cart/display');
+            redirect(base_url().'index.php/C_cart/display');
         }
     }
 
@@ -62,18 +62,18 @@ class c_cart extends CI_Controller {
         <?php }
         else {
             $_SESSION['cart'][$id]['jumlah'] = $qty - 1;
-            redirect(base_url().'index.php/c_cart/display');
+            redirect(base_url().'index.php/C_cart/display');
         }
     }
     
     public function clear_all(){
         unset($_SESSION['cart']);
-        redirect(base_url().'index.php/c_cart/display');
+        redirect(base_url().'index.php/C_cart/display');
     }
 
     public function clear_by_id($id){
         unset($_SESSION['cart'][$id]);
-        redirect(base_url().'index.php/c_cart/display');
+        redirect(base_url().'index.php/C_cart/display');
     }
 
 }

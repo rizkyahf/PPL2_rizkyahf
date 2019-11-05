@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class c_ongkir extends CI_Controller {
+class C_ongkir extends CI_Controller {
     function __construct(){
         parent::__construct();
-        $this->load->model('m_souvenir');
+        $this->load->model('M_souvenir');
     }
 
     private $api_url = "https://api.rajaongkir.com/starter/";

@@ -5,7 +5,7 @@
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form method="POST" action="<?=base_url();?>index.php/c_transaksi/proses_transaksi ">
+            <form method="POST" action="<?=base_url();?>index.php/C_transaksi/proses_transaksi ">
                 <div class="row">
                     <div class="col-md-2">
                         Kode Penjualan
@@ -123,7 +123,7 @@
                         <input type="submit" name="submit" value="Lanjutkan Transaksi" class="btn btn-primary btn-block">
                     </div>
                     <div class="col-md-3">
-                        <a class="btn btn-danger btn-block" href="<?=base_url();?>index.php/c_cart/display">Batalkan Transaksi</a>
+                        <a class="btn btn-danger btn-block" href="<?=base_url();?>index.php/C_cart/display">Batalkan Transaksi</a>
                     </div>
                 </div>
             </form>
@@ -145,7 +145,7 @@
 
             $.ajax({
                 type : 'GET',
-                url : '<?=base_url();?>index.php/c_ongkir/ajax_city_dropdown',
+                url : '<?=base_url();?>index.php/C_ongkir/ajax_city_dropdown',
                 data :  'prov_id=' + prov,
                 success: function (data) {
                     //jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten
@@ -169,7 +169,7 @@
             else{
                 $.ajax({
                     type : 'POST',
-                    url : '<?=base_url();?>index.php/c_ongkir/ajax_calculate_ongkir',
+                    url : '<?=base_url();?>index.php/C_ongkir/ajax_calculate_ongkir',
                     data :  {'kota_tujuan' : kota_tujuan, 'kurir' : kurir, 'asal' : asal, 'berat' : berat},
                     success: function (data) {
                         //jika data berhasil didapatkan, tampilkan ke dalam option select kabupaten

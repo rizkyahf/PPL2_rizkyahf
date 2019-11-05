@@ -22,7 +22,7 @@
                         <p><?="Rp. ".number_format($row['harga'],2,',','.'); ?></p>
                         <p>Stok: <?=$row['stok']; ?></p>
                         <a class="btn btn-primary" href="">Lihat Detil Barang</a>
-                        <a class="btn btn-success <?php if($row['stok']==0){echo "disabled";} ?>" href="<?=base_url();?>index.php/c_cart/add/<?=$row['id_barang']; ?>"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                        <a class="btn btn-success <?php if($row['stok']==0){echo "disabled";} ?>" href="<?=base_url();?>index.php/C_cart/add/<?=$row['id_barang']; ?>"><span class="glyphicon glyphicon-shopping-cart"></span></a>
                     </div>
                 </div>
             </div>
