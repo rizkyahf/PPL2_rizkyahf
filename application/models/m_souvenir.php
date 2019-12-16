@@ -22,4 +22,8 @@ class M_souvenir extends CI_Model {
         $this->db->where('id_barang', $id);
         $this->db->update('souvenir', $data);
     }
+
+    public function insert($data){
+        $this->db->insert('souvenir', $data);
+    }
 }

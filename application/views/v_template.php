@@ -13,6 +13,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?=base_url();?>assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- DATATABLES CSS -->
+    <link type="text/css" href="<?=base_url();?>assets/datatables/dataTables.css" rel="stylesheet">
 
 
     <!-- Custom styles for this template -->
@@ -29,6 +31,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="<?=base_url();?>assets/bootstrap/js/jquery-3.3.1.min.js"></script>
     <script src="<?=base_url();?>assets/bootstrap/js/bootstrap.js"></script>
+    <!-- DATATABLES JS -->
+    <script src="<?=base_url();?>assets/datatables/dataTables.js"></script>
+    <!-- <script src="/plugin/datatables/DataTables-1.10.20/js/dataTables.bootstrap4.js"></script> -->
+
   </head>
 
   <body>
@@ -51,10 +57,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="container">
-                        <div class="col-md-3 menu-button"><a href="<?=base_url();?>">Home</a></div>
+                        <!-- <div class="col-md-3 menu-button"><a href="<?=base_url();?>">Home</a></div> -->
                         <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/C_souvenir/display">Souvenir</a></div>
                         <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/C_cart/display">My Cart</a></div>
                         <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/C_transaksi/display_all">Daftar Transaksi (admin)</a></div>
+                        <div class="col-md-3 menu-button"><a href="<?=base_url();?>index.php/C_souvenir/display_all">Daftar Souvenir (admin)</a></div>
                         <!-- <?php if(isset($_SESSION['username'])): ?>
                         <div class="col-md-3 menu-button"><a href="template.php?page=admin">Admin Page</a></div>
                         <div class="col-md-3 menu-button"><a href="logout.php">Logout</a></div>
